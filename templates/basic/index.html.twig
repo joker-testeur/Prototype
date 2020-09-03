@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Basic index{% endblock %}
+
+{% block body %}
+    <h1>Basic index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Label</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>IsVisible</th>
+                <th>IsValidated</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for basic in basics %}
+            <tr>
+                <td>{{ basic.id }}</td>
+                <td>{{ basic.code }}</td>
+                <td>{{ basic.label }}</td>
+                <td>{{ basic.createdAt ? basic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ basic.updatedAt ? basic.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ basic.isVisible ? 'Yes' : 'No' }}</td>
+                <td>{{ basic.isValidated ? 'Yes' : 'No' }}</td>
+                <td>{{ basic.status }}</td>
+                <td>
+                    <a href="{{ path('basic_show', {'id': basic.id}) }}">show</a>
+                    <a href="{{ path('basic_edit', {'id': basic.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('basic_new') }}">Create new</a>
+{% endblock %}

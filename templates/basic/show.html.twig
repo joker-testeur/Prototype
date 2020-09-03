@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Basic{% endblock %}
+
+{% block body %}
+    <h1>Basic</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ basic.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ basic.code }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ basic.label }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ basic.createdAt ? basic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ basic.updatedAt ? basic.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsVisible</th>
+                <td>{{ basic.isVisible ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>IsValidated</th>
+                <td>{{ basic.isValidated ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ basic.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('basic_index') }}">back to list</a>
+
+    <a href="{{ path('basic_edit', {'id': basic.id}) }}">edit</a>
+
+    {{ include('basic/_delete_form.html.twig') }}
+{% endblock %}
